@@ -3,22 +3,28 @@
 **Snotify** is a simple notification tool for Spotifyd written in Python 3.7.
 
 > Dependencies:
+
 > spotipy
+
 > spotify-token
+
 > dunst (or similar)
 
 ## 1. Installation
 
 First, clone this repository then install Snotify:
+
 `python setup.py install --user`
 
 ## 2. Configuration
 
 Add this line to your Spotifyd config file (~/.config/spotifyd/spotifyd.conf):
+
 `onevent = /home/username/.local/bin/snotify`
 
 Then launch snotify. It will prompt you for your Spotify username and password.
-(a configuration file named config will be stored in ~/.config/snotify/)
+
+> Note: A configuration file named config will be stored in ~/.config/snotify/)
 
 Finally restart Spotifyd:
 `systemctl --user restart spotifyd.service`
