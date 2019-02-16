@@ -1,0 +1,2 @@
+spotipy>=2.4.4
+spotify-token>=0.1.0

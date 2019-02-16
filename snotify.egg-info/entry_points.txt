@@ -1,0 +1,3 @@
+[console_scripts]
+snotify = snotify:main
+
