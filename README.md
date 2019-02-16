@@ -4,11 +4,7 @@
 
 > Dependencies:
 
-> spotipy
-
-> spotify-token
-
-> dunst (or similar)
+> spotipy, spotify-token, dunst (or similar)
 
 ## 1. Installation
 
