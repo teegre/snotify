@@ -1,9 +1,0 @@
-README.md
-setup.py
-snotify/__init__.py
-snotify.egg-info/PKG-INFO
-snotify.egg-info/SOURCES.txt
-snotify.egg-info/dependency_links.txt
-snotify.egg-info/entry_points.txt
-snotify.egg-info/requires.txt
-snotify.egg-info/top_level.txt

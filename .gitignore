@@ -1,0 +1,4 @@
+build/*
+dist/*
+requirements.txt
+pyenv.cfg
