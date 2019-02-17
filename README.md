@@ -29,9 +29,9 @@ That's it. A notification should display on song start / change / stop.
 
 ## 3. Uninstall
 
-`pip uninstall snotify
+`pip uninstall snotify`
 
-rm -rf ~/.config/snotify`
+`rm -rf ~/.config/snotify`
 
 Remove the **onevent** line in your spotifyd.conf file and restart Spotifyd.
 
