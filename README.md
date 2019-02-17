@@ -1,4 +1,4 @@
-# **Snotify** version 0.1.0 (02-2019)
+# **Snotify** version 0.2.0 (02-2019)
 
 **Snotify** is a simple notification tool for Spotifyd written in Python 3.7.
 
