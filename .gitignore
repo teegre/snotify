@@ -1,2 +1,3 @@
-build/
-dist/
+build
+dist
+snotify.egg-info
