@@ -2,9 +2,7 @@
 
 **Snotify** is a simple notification tool and playback controller for Spotifyd written in Python 3.7.
 
-> Dependencies:
-
-> spotipy, spotify-token, dunst (or similar)
+*Dependencies: spotipy, spotify-token, dunst (or similar)*
 
 ## 1. Installation
 
@@ -20,9 +18,10 @@ Add this line to your Spotifyd config file (~/.config/spotifyd/spotifyd.conf):
 
 Then launch snotify. It will prompt you for your Spotify username and password.
 
-> Note: A configuration file named config will be stored in ~/.config/snotify/)
+*Note: A configuration file named config will be stored in ~/.config/snotify/*
 
 Finally restart Spotifyd:
+
 `systemctl --user restart spotifyd.service`
 
 That's it. A notification should display on song start / change / stop.
@@ -43,11 +42,16 @@ Snotify [-h] [-a {play,pause,next,previous}] [-f <format>] [--loop]
 Notification tool and simple playback controller for Spotifyd.
 
 optional arguments:
+
   -h, --help            show this help message and exit
+  
   -a {play,pause,next,previous}
                         playback control.
-  -f <format>, --format <format>
+  
+  -f *format*, --format *format*
+  
   --loop                continuous display
+  
   -v, --version         show program's version number and exit
 
 Formatting: %t track title, %n artist name,%a album name, %y year of release,
