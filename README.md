@@ -36,7 +36,7 @@ Remove the **onevent** line in your spotifyd.conf file and restart Spotifyd.
 
 ## 4. Usage
 
-Snotify [-h] [-a {toggle, play,pause,next,previous}] [-f <format>] [--loop]
+Snotify [-h] [-a {toggle, play,pause,next,previous}] [-f=FORMAT]
                [-v]
 
 Notification tool and simple playback controller for Spotifyd.
@@ -45,10 +45,10 @@ optional arguments:
 
   -h, --help            show this help message and exit
   
-  -a {play,pause,next,previous}
+  -a {toggle,play,pause,next,previous}
                         playback control.
   
-  -f *format*, --format *format*
+  -f=FORMAT, --format=FORMAT
   
   -v, --version         show program's version number and exit
 
