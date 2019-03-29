@@ -1,6 +1,6 @@
 # **Snotify** version 0.3.0 (03-2019)
 
-**Snotify** is a simple notification tool and playback controller for Spotifyd written in Python 3.7.
+**Snotify** is a simple notification tool and a basic playback controller for Spotifyd written in Python 3.7.
 
 *Dependencies: spotipy, spotify-token, dunst (or similar)*
 
@@ -26,7 +26,58 @@ Finally restart Spotifyd:
 
 That's it. A notification should display on song start / change / stop.
 
-## 3. Uninstall
+## 3. Usage
+
+*Note: It is possible to use Snotify from the command line.*
+
+### 3.1 Notification format
+
+You can specify what to display by using the -f (--format) option. For instance :
+
+`snotify -f '%n: %t'`
+
+displays artist and trackname.
+
+
+Possible variables are:
+
+- %n artist name
+- %t track title
+- %a album
+- %y year of release
+- %d track duration
+- %p track progress
+
+By default, Snotify display "artist - track title". That said, if you want to change notification format, you have to use the included **snotifier** script and change the **onevent** option in the Spotifyd configuration file accordingly.
+
+`# /usr/bin/bash
+~/.local/bin/snotify -f $'<b>%t</b>\n%n\n<i>%a</i>\n%y'`
+
+`onevent = /home/username/bin/snotifier`
+
+If you want to preview a notification for a particular format, you can use the -n (--notify) option from the command line.
+
+`snotify --notify --format '%n: %t'`
+
+### 3.2 Playback control
+
+Snotify also provides basic playback control with the -a option.
+
+- toggle
+- play
+- stop
+- next
+- prev
+
+### 3.3 Command line options
+
+-h --help
+-f --format
+-n --notify
+-a toggle,play,stop,next,prev
+-v --version
+### 3.3 
+## 4. Uninstall
 
 `pip uninstall snotify`
 
@@ -36,7 +87,7 @@ Remove the **onevent** line in your spotifyd.conf file and restart Spotifyd.
 
 ## 4. Usage
 
-Snotify [-h] [-a {toggle, play,pause,next,previous}] [-f=FORMAT]
+Snotify [-h] [-a {toggle,play,pause,next,prev}] [-f=FORMAT]
                [-v]
 
 Notification tool and simple playback controller for Spotifyd.

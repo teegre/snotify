@@ -1,0 +1,3 @@
+#! /usr/bin/bash
+
+~/.local/bin/snotify -f $'<b>%t</b>\n%n\n<i>%a</i>\n%y'
