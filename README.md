@@ -48,9 +48,10 @@ Possible variables are:
 - %d track duration
 - %p track progress
 
-By default, Snotify display "artist - track title". That said, if you want to change notification format, you have to use the included **snotifier** script and change the **onevent** option in the Spotifyd configuration file accordingly.
+By default, Snotify displays "artist - track title". That said, if you want to change notification format, you have to use the included **snotifier** script and change the **onevent** option in the Spotifyd configuration file accordingly.
 
 `# /usr/bin/bash
+
 ~/.local/bin/snotify -f $'<b>%t</b>\n%n\n<i>%a</i>\n%y'`
 
 `onevent = /home/username/bin/snotifier`
@@ -72,10 +73,15 @@ Snotify also provides basic playback control with the -a option.
 ### 3.3 Command line options
 
 -h --help
+
 -f --format
+
 -n --notify
+
 -a toggle,play,stop,next,prev
+
 -v --version
+
 ### 3.3 
 ## 4. Uninstall
 
