@@ -81,7 +81,6 @@ Snotify also provides basic playback control with the -a option.
 
 -v --version
 
-### 3.3 
 ## 4. Uninstall
 
 `pip uninstall snotify`
