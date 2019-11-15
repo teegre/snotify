@@ -41,13 +41,13 @@ displays artist and trackname.
 
 Possible variables are:
 
-- %n artist name
-- %t track title
-- %a album
-- %y year of release
-- %d track duration
-- %p track progress
-- %s playback state
+- %artist artist name
+- %track track title
+- %album album
+- %date year of release
+- %duration track duration
+- %progress track progress
+- %state playback state
 
 By default, Snotify displays "artist: track title". That said, if you want to change notification format, you have to use the included **snotifier** script (copy it somewhere and modify it) and change the **onevent** option in the Spotifyd configuration file accordingly.
 
