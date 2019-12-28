@@ -1,4 +1,4 @@
-# **Snotify** version 0.3.0 (03-2019)
+# **Snotify** version 0.4.0 (12-2019)
 
 **Snotify** is a simple notification tool and a basic playback controller for Spotifyd written in Python 3.7.
 
@@ -34,20 +34,22 @@ That's it. A notification should display on song start / change / stop.
 
 You can specify what to display by using the -f (--format) option. For instance :
 
-`snotify -f '%n: %t'`
+`snotify -f '%artist: %title'`
 
 displays artist and trackname.
 
 
 Possible variables are:
 
-- %artist artist name
-- %track track title
-- %album album
-- %date year of release
-- %duration track duration
-- %progress track progress
-- %state playback state
+|Variable |Description
+|:--------|:----------
+|%artist |artist name
+|%title |track title
+|%album |album
+|%date |year of release
+|%duration |track duration
+|%progress |track progress
+|%status |playback state
 
 By default, Snotify displays "artist: track title". That said, if you want to change notification format, you have to use the included **snotifier** script (copy it somewhere and modify it) and change the **onevent** option in the Spotifyd configuration file accordingly.
 
@@ -55,7 +57,7 @@ By default, Snotify displays "artist: track title". That said, if you want to ch
 
 If you want to preview a notification for a particular format, you can use the -n (--notify) option from the command line.
 
-`snotify --notify --format '%n: %t'`
+`snotify --notify --format '%artist: %title'`
 
 ### 3.2 Playback control
 
@@ -67,7 +69,12 @@ Snotify also provides basic playback control with the -a option.
 - next
 - prev
 
-### 3.3 Command line options
+### 3.3 Volume control
+
+Use the --volume (-V) option to set volume.<br>
+Possible values are [+/-] 0-100
+
+### 3.4 Command line options
 
 -h --help
 
@@ -78,6 +85,8 @@ Snotify also provides basic playback control with the -a option.
 -F --force - force output to stdout
 
 -a toggle,play,pause,next,prev - playback control
+
+-V --volume=[+/-]volume_percent - set volume
 
 -v --version
 
