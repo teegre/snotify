@@ -1,3 +1,3 @@
 #! /usr/bin/env bash
 
-"$HOME"/.local/bin/snotify -f $'%track\n%artist\n%album\n%date'
+"$HOME"/.local/bin/snotify --image -f $'%track\n%artist\n%album\n%date'
