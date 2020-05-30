@@ -1,4 +1,4 @@
-# **Snotify** version 0.5.0 (05-2020)
+# **Snotify** version 0.5.1 (05-2020)
 
 **Snotify** is a simple notification tool and a basic playback controller for Spotifyd written in Python 3.7.
 
@@ -90,6 +90,8 @@ Possible values are [+/-] 0-100
 -f --format=FORMAT text format
 
 -n --notify - display notification
+
+-i --image - display album art in notification
 
 -F --force - force output to stdout
 
