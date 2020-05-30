@@ -1,8 +1,8 @@
-# **Snotify** version 0.4.0 (12-2019)
+# **Snotify** version 0.5.0 (05-2020)
 
 **Snotify** is a simple notification tool and a basic playback controller for Spotifyd written in Python 3.7.
 
-*Dependencies: spotipy, spotify-token, dunst (or similar)*
+*Dependencies: spotipy, dunst (or similar)*
 
 ## 1. Installation
 
@@ -16,7 +16,16 @@ Add this line to your Spotifyd config file (~/.config/spotifyd/spotifyd.conf):
 
 `onevent = /home/username/.local/bin/snotify`
 
-Then launch snotify. It will prompt you for your Spotify username and password.
+***Since it is no longer possible to get an access token with username/password,  
+there is one more step before being able to use snotify :***
+
+- if you already have used snotify before, *delete the config file* stored in ~/.config/snotify
+- open an **incognito/private window** in your web browser and go to this address: [https://accounts.spotify.com/en/login?continue=https:%2F%2Fopen.spotify.com%2F](https://accounts.spotify.com/en/login?continue=https:%2F%2Fopen.spotify.com%2F)
+- activate *developer tools*
+- connect to Spotify®
+- in *Network/Cookies* search for **sp_key** and **sp_dc** and copy the values.
+
+Then launch snotify and it will prompt you for *key* and *dc*.
 
 *Note: A configuration file named config will be stored in ~/.config/snotify/*
 
