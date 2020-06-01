@@ -1,4 +1,4 @@
-# **Snotify** version 1.0l (05-2020)
+# **Snotify** version 1.0 (05-2020)
 
 **Snotify** is a simple notification tool for Spotifyd written in Python 3.
 
@@ -30,8 +30,9 @@ You can specify what to display by using the -f (--format) option. For instance 
 
 `snotify -f '%artist: %title'`
 
-displays artist and trackname.
+displays artist and title.
 
+`snotify -i -f $'%title\n%artist\n%album | %year'`
 
 Possible variables are:
 
@@ -42,7 +43,9 @@ Possible variables are:
 |%album |album
 |%year |year of release
 
-By default, Snotify displays "artist: track title". That said, if you want to change notification format, you have to use the included **snotifier** script (copy it somewhere and modify it) and change the **onevent** option in the Spotifyd configuration file accordingly, ie:
+By default, Snotify displays "artist: track title".  
+That said, if you want to change notification format, you have to use the included **snotifier** script  
+(copy it somewhere and modify it) and change the **onevent** option in the Spotifyd configuration file accordingly, ie:
 
 `onevent = /home/username/bin/snotifier`
 
