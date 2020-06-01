@@ -65,6 +65,8 @@ That said, if you want to change notification format, you have to use the includ
 
 `pip uninstall snotify`
 
+`rm ~/.local/bin/snotify
+
 `rm -rf ~/.config/snotify`
 
 Remove the **onevent** line in your spotifyd.conf file and restart Spotifyd.
