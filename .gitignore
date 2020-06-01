@@ -1,5 +1,3 @@
 build
 dist
-snotify.egg-info
-snotify/config.py
-snotify/__pycache__
+.egg-info
