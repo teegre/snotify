@@ -22,6 +22,7 @@ When you're done, modify the file **snotify/config.py**:
   if not cid: cid = 'YOUR_CLIENT_ID'
   if not cs: cs = 'YOUR_CLIENT_SECRET'
   ```
+and replace **YOUR_CLIENT_ID** and **YOUR_CLIENT_SECRET** by your own credentials.
 
 ### 1.3 Install Snotify:
 
