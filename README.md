@@ -6,7 +6,32 @@
 
 ## 1. Installation
 
-First, clone this repository then install Snotify:
+### 1.1 Clone this repository:
+
+`git clone https://github.com/teegre/snotify.git`
+
+### 1.2 Client ID and Secret
+
+To be able to use snotify, you need to get your own *client id* and *client secret*.  
+Go to: [https://developer.spotify.com/dashboard/](https://developer.spotify.com/dashboard/)  and connect.  
+Then click on **"create a client id"** and follow the instructions.
+
+When you're done, you have two options :
+
+- Add **SPOTIFY_CLIENT_ID** and **SPOTIFY_CLIENT_SECRET** *environment variables*  
+to your shell rc file:  
+  ```shell
+  export SPOTIFY_CLIENT_ID="YOUR_CLIENT_ID"  
+  export SPOTIFY_CLIENT_SECRET="YOUR_CLIENT_SECRET"  
+  ```
+
+- **Or** modify the file **snotify/config.py**  
+  ```python
+  cid = 'YOUR_CLIENT_ID'
+  cs = 'YOUR_CLIENT_SECRET'
+  ```
+
+### 1.3 Install Snotify:
 
 `python setup.py install --user`
 
@@ -28,10 +53,8 @@ That's it. A notification should display on song start / change / stop.
 
 You can specify what to display by using the -f (--format) option. For instance :
 
-`snotify -f '%artist: %title'`
-
-displays artist and title.
-
+`snotify -f '%artist: %title'`  
+or  
 `snotify -i -f $'%title\n%artist\n%album | %year'`
 
 Possible variables are:
