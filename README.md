@@ -16,19 +16,19 @@ To be able to use snotify, you need to get your own *client id* and *client secr
 Go to: [https://developer.spotify.com/dashboard/](https://developer.spotify.com/dashboard/)  and connect.  
 Then click on **"create a client id"** and follow the instructions.
 
-When you're done, you have two options :
+When you're done ~~, you have two options~~ :
 
-- Add **SPOTIFY_CLIENT_ID** and **SPOTIFY_CLIENT_SECRET** *environment variables*  
-to your shell rc file:  
-  ```shell
+~~- Add **SPOTIFY_CLIENT_ID** and **SPOTIFY_CLIENT_SECRET** *environment variables*  
+to your shell rc file:  ~~
+  ~~```shell
   export SPOTIFY_CLIENT_ID="YOUR_CLIENT_ID"  
   export SPOTIFY_CLIENT_SECRET="YOUR_CLIENT_SECRET"  
-  ```
+~~  ```
 
-- **Or** modify the file **snotify/config.py**  
+- ~~**Or**~~ modify the file **snotify/config.py**  
   ```python
-  cid = 'YOUR_CLIENT_ID'
-  cs = 'YOUR_CLIENT_SECRET'
+  if not cid: cid = 'YOUR_CLIENT_ID'
+  if not cs: cs = 'YOUR_CLIENT_SECRET'
   ```
 
 ### 1.3 Install Snotify:
