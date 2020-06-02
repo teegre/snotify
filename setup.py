@@ -7,6 +7,7 @@ setup(
     author='teegre',
     url='https://github.com/teegre/snotify',
     packages=['snotify'],
+    scripts=['snotifier'],
     entry_points={'console_scripts': ['snotify=snotify:main',]},
     python_requires='>=3.8',
     platforms = ['Linux'],

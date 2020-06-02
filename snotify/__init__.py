@@ -14,25 +14,25 @@ __version__ = '1.0'
 def err(message):
     term = getenv('TERM')
     if term != 'linux': print(f'snotify: {message}')
-    else: Popen(['notify-send', '-u', 'urgent', 'snotify', message])
+    else: Popen(['notify-send', '-u', 'critical', 'snotify', message])
 
 
-def notify(message, album_art=None):
+def notify(message, album_art=None, duration=5000):
     if album_art:
-        Popen(['notify-send', '-t', '5000', '-u', 'low', '-i', album_art, message])
+        Popen(['notify-send', '-t', str(duration), '-u', 'low', '-i', album_art, message])
     else:
-        Popen(['notify-send', '-t', '5000', '-u', 'low', message])
+        Popen(['notify-send', '-t', str(duration), '-u', 'low', message])
 
 
 class Track():
     def __init__(self, trackid, token):
         self.__id = trackid
         self.__token = token
-        self.artists = None
-        self.title = None
-        self.album = None
-        self.year = None
-        self.album_art = None
+        self.artists = ''
+        self.title = ''
+        self.album = ''
+        self.year = ''
+        self.album_art = ''
         self.__cachedir = getenv('HOME') + '/.config/snotify/cache'
         if not os.path.exists(self.__cachedir):
             makedirs(self.__cachedir)
@@ -40,15 +40,18 @@ class Track():
 
     def __get_track_info(self):
         # requesting track info
+
+        if not self.__token: return False
+
         headers = {'Authorization': f'Bearer {self.__token}'}
         r = requests.get(
             f'https://api.spotify.com/v1/tracks/{self.__id}',
             headers=headers
         )
 
-        tr = r.json()
-
         try:
+            r.raise_for_status()
+            tr = r.json()
             self.title = tr['name']
             self.artists = '/'.join(artist['name'] for artist in tr['artists'])
             self.album = tr['album']['name']
@@ -58,7 +61,9 @@ class Track():
             filename = image_url.split('/')[-1] + '.jpg'
             self.album_art = self.__get_album_art(image_url, filename)
             return True
-
+        except requests.HTTPError as e:
+            err(f'{str(e).lower()}')
+            return False
         except KeyError:
             err(f'unable to get track info!\nreason: {r.json()["error_description"].lower()}')
             return False
@@ -75,7 +80,7 @@ class Track():
                     return filepath
             except Exception as e:
                 err(f'unable to get album_art\nreason: {str(e).lower()}')
-                return None
+                return ''
 
 class Token():
     """
@@ -85,7 +90,7 @@ class Token():
     def __init__(self):
         self.__config_dir = getenv('HOME') + '/.config/snotify'
         self.__token_file = self.__config_dir + '/token'
-        self.__token = None
+        self.__token = ''
         self.__expiration_date = 0
         self.__get_auth()
 
@@ -114,7 +119,8 @@ class Token():
             return True
         except KeyError:
             err(f'unable to obtain access token!\nreason: {r.json()["error_description"].lower()}')
-            self.__token = None
+            self.__token = ''
+            self.__expiration_date = 0
             return False
 
     def __check_token(self):
@@ -166,6 +172,7 @@ class Token():
 def get_info(trackid, token, _format=None):
     # return a tuple containing given track info (_format)
     # and album art
+    if not token: return None, None
     track = Track(trackid, token)
     if not track: return None, None
     if _format:
@@ -181,7 +188,7 @@ def get_info(trackid, token, _format=None):
 
 def shell(_format=None, image=False, force=False):
     token = Token()
-    if not token:
+    if not token.value:
         err('something went wrong...')
         sys.exit(1)
     event = getenv('PLAYER_EVENT')

@@ -1,3 +1,11 @@
 #! /usr/bin/env bash
 
+SPOTIFY_CLIENT_ID="ID"
+SPOTIFY_CLIENT_SECRET="SECRET"
+export SPOTIFY_CLIENT_ID
+export SPOTIFY_CLIENT_SECRET
+
+TERM="linux"
+export TERM
+
 "$HOME"/.local/bin/snotify -i -f $'%title\n%artist\n%album\n%year'

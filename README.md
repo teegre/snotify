@@ -16,23 +16,40 @@ To be able to use snotify, you need to get your own *client id* and *client secr
 Go to: [https://developer.spotify.com/dashboard/](https://developer.spotify.com/dashboard/)  and connect.  
 Then click on **"create a client id"** and follow the instructions.
 
-When you're done, modify the file **snotify/config.py**:
+When you're done:
 
-  ```python
-  if not cid: cid = 'YOUR_CLIENT_ID'
-  if not cs: cs = 'YOUR_CLIENT_SECRET'
+**At the top of the *snotifier* script**:
+
+  ```shell
+  SPOTIFY_CLIENT_ID="YOUR_CLIENT_ID"
+  SPOTIFY_CLIENT_SECRET="YOUR_CLIENT_SECRET"
+  export SPOTIFY_CLIENT_ID
+  export SPOTIFY_CLIENT_SECRET
   ```
-and replace **YOUR_CLIENT_ID** and **YOUR_CLIENT_SECRET** by your own credentials.
+replace **YOUR_CLIENT_ID** and **YOUR_CLIENT_SECRET** by your own credentials.  
+If you use a password manager like *pass* you can of course pass the command to the  
+variables. For instance:
+
+  ```shell
+  SPOTIFY_CLIENT_ID="$(pass path/to/spotify_client_id)"
+  ...
+  ```
 
 ### 1.3 Install Snotify:
 
 `python setup.py install --user`
 
+Then make sure to change *snotifier* permissions:
+
+  ```shell
+  chmod 700 "$HOME/.local/bin/snotifier
+  ```
+
 ## 2. Configuration
 
 Add this line to your Spotifyd config file (~/.config/spotifyd/spotifyd.conf):
 
-`onevent = /home/username/.local/bin/snotify`
+`onevent = /home/username/.local/bin/snotifier`
 
 *Note: A configuration file named token will be stored in ~/.config/snotify/*
 
@@ -42,7 +59,10 @@ Finally restart Spotifyd:
 
 That's it. A notification should display on song start / change / stop.
 
-### 3 Notification format
+### 3. Notification format
+
+By default, Snotify displays "artist: track title".  
+That said, if you want to change notification format, you have to modify the **snotifier** script to your likings:  
 
 You can specify what to display by using the -f (--format) option. For instance :
 
@@ -58,10 +78,6 @@ Possible variables are:
 |%title |track title
 |%album |album
 |%year |year of release
-
-By default, Snotify displays "artist: track title".  
-That said, if you want to change notification format, you have to use the included **snotifier** script  
-(copy it somewhere and modify it) and change the **onevent** option in the Spotifyd configuration file accordingly, ie:
 
 `onevent = /home/username/bin/snotifier`
 
