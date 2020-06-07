@@ -42,7 +42,7 @@ variables. For instance:
 Then make sure to change *snotifier* permissions:
 
   ```shell
-  chmod 700 "$HOME/.local/bin/snotifier
+  chmod 700 "$HOME"/.local/bin/snotifier
   ```
 
 ## 2. Configuration
@@ -51,7 +51,9 @@ Add this line to your Spotifyd config file (~/.config/spotifyd/spotifyd.conf):
 
 `onevent = /home/username/.local/bin/snotifier`
 
-*Note: A configuration file named token will be stored in ~/.config/snotify/*
+*Note:  
+~/.config/snotify directory is created when you first use snotify.  
+It contains a cache directory that stores album images, and also a token file.*
 
 Finally restart Spotifyd:
 
